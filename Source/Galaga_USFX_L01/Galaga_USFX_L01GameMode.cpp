@@ -5,6 +5,7 @@
 #include "NaveEnemiga.h"
 #include "NaveEnemigaTransporte.h"
 #include "NaveEnemigaCaza.h"
+#include "NaveEnemigaFactory.h"
 
 
 AGalaga_USFX_L01GameMode::AGalaga_USFX_L01GameMode()
@@ -20,7 +21,7 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 {
 	Super::BeginPlay();
 
-	UWorld* const World = GetWorld();
+	/*UWorld* const World = GetWorld();
 	if (World)
 	{
 		for (int i = 0; i < 20; i++)
@@ -43,8 +44,20 @@ void AGalaga_USFX_L01GameMode::BeginPlay()
 		float ChangeInterval = 4; // Intervalo de cambio en segundos
 
 		GetWorldTimerManager().SetTimer(TimerHandle, this, &AGalaga_USFX_L01GameMode::RandomizeEnemySpeed, ChangeInterval, true);
+	}*/
+	UWorld* World = GetWorld();
+	if (!World)
+	{
+		return;
 	}
 
+	// Configura las coordenadas de spawn para cada tipo de nave
+	FVector SpawnLocationCaza = FVector(500.0f, -1500.0f, 250.0f); // Ejemplo: spawn en el aire a 1000 unidades de altura
+	FVector SpawnLocationTransporte = FVector(500.0f, -1600.0f, 250.0f); // Ejemplo: spawn a la derecha del centro a 1000 unidades de altura
+
+	// Usa la fábrica para crear las naves enemigas con diferentes ubicaciones de spawn
+	ANaveEnemiga* NuevaNaveCaza = ANaveEnemigaFactory::CrearNaveEnemiga("Caza", World, SpawnLocationCaza, FRotator::ZeroRotator);
+	ANaveEnemiga* NuevaNaveTransporte =	ANaveEnemigaFactory::CrearNaveEnemiga("Transporte", World, SpawnLocationTransporte, FRotator::ZeroRotator);
 }
 
 void AGalaga_USFX_L01GameMode::RandomizeEnemySpeed()

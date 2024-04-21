@@ -2,6 +2,8 @@
 
 
 #include "NaveEnemiga.h"
+#include "NaveEnemigaCaza.h"
+#include "NaveEnemigaTransporte.h"
 
 // Sets default values
 ANaveEnemiga::ANaveEnemiga()
@@ -39,5 +41,10 @@ void ANaveEnemiga::Tick(float DeltaTime)
 	Super::Tick(DeltaTime);
 
 }
+
+
+
+
+
 
 

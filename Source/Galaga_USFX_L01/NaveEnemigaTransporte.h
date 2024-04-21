@@ -25,6 +25,8 @@ public:
 	FORCEINLINE float GetCapacidadCargaVolumen() const { return capacidadCargaVolumen; }
 	FORCEINLINE void SetCapacidadCargaVolumen(float capacidad) { capacidadCargaVolumen = capacidad; }
 
+	FString tipoNave = "Transporte";
+
 protected:
 	virtual void Mover(float DeltaTime);
 	virtual void Disparar();

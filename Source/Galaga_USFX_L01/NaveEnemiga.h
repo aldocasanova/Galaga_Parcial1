@@ -26,9 +26,10 @@ protected:
 	int trayectoria; //Cada valor numerico representa a una funcion que la nave debe asumir para moverse
 	int capacidadPasajeros; //Numero de naves que puede transportar
 	int capacidadMunicion; //Numero de disparos que puede realizar antes de recargar
-	int tipoNave; //Cada valor numerico representa a un tipo de nave enemiga
 	float experiencia;
 	float energia;
+
+	FString tipoNave;
 
 //primer parcial
 	float MinSpeed;
@@ -45,13 +46,15 @@ public:
 	FORCEINLINE int GetTrayectoria() const { return trayectoria; }
 	FORCEINLINE int GetCapacidadPasajeros() const { return capacidadPasajeros; }
 	FORCEINLINE int GetCapacidadMunicion() const { return capacidadMunicion; }
-	FORCEINLINE int GetTipoNave() const { return tipoNave; }
 	FORCEINLINE float GetExperiencia() const { return experiencia; }
 	FORCEINLINE float GetEnergia() const { return energia; }
 	
 	FORCEINLINE float GetMaxSpeed() const { return MaxSpeed; }
 	FORCEINLINE float GetMinSpeed() const { return MinSpeed; }
 	FORCEINLINE void SetLimiteInferiorX(float _LimiteInferiorX) { LimiteInferiorX = _LimiteInferiorX; }
+
+	FORCEINLINE FString GettipoNave() const { return tipoNave; }
+
 
 	FORCEINLINE void SetVelocidad(float _velocidad) { velocidad = _velocidad; }
 	FORCEINLINE void SetResistencia(float _resistencia) { resistencia = _resistencia; }
@@ -62,9 +65,10 @@ public:
 	FORCEINLINE void SetTrayectoria(int _trayectoria) { trayectoria = _trayectoria; }
 	FORCEINLINE void SetCapacidadPasajeros(int _capacidadPasajeros) { capacidadPasajeros = _capacidadPasajeros; }
 	FORCEINLINE void SetCapacidadMunicion(int _capacidadMunicion) { capacidadMunicion = _capacidadMunicion; }
-	FORCEINLINE void SetTipoNave(int _tipoNave) { tipoNave = _tipoNave; }
 	FORCEINLINE void SetExperiencia(float _experiencia) { experiencia = _experiencia; }
 	FORCEINLINE void SetEnergia(float _energia) { energia = _energia; }
+
+	FORCEINLINE void SettipoNave(FString _tipoNave) { tipoNave = _tipoNave; }
 	
 	FORCEINLINE void SetMaxSpeed(float _MaxSpeed) { MaxSpeed = _MaxSpeed; }
 	FORCEINLINE void SetMinSpeed(float _MinSpeed) { MinSpeed = _MinSpeed; }
@@ -85,4 +89,6 @@ protected:
 	//virtual void Mover() = 0;
 	void Mover(float DeltaTime) PURE_VIRTUAL(ANaveEnemiga::Mover, );
 	void Disparar() PURE_VIRTUAL(ANaveEnemiga::Disparar, );
+
+	//static ANaveEnemiga* CrearNaves(FString tipoNave);
 };
